@@ -2,12 +2,16 @@
 
 > Objectif : Comprendre les bases de la création d'un serveur HTTP avec Node.js.
 
+---
+
 ## Instructions :
 
 * Installez Node.js sur votre machine si ce n'est pas déjà fait.
 * Créez un fichier `server.js`.
 * Utilisez le module http pour créer un serveur qui écoute sur le port 3000.
 * Lorsque le serveur reçoit une requête, répondez avec un message "Hello, World!".
+
+---
 
 ### Code :
 
@@ -28,15 +32,21 @@ server.listen(3000, '127.0.0.1', () => {
 ```
 </details>
 
+---
+
 # Exercice 2 : Gestion des Routes
 
 > Objectif : Apprendre à gérer différentes routes dans une application Node.js.
+
+---
 
 ## Instructions :
 
 * Reprenez le fichier server.js de l'exercice précédent.
 * Modifiez le serveur pour gérer trois routes : /, /about, et /contact.
 * Répondez avec un message différent pour chaque route.
+
+---
 
 ### Code :
 
@@ -69,15 +79,21 @@ server.listen(3000, '127.0.0.1', () => {
 
 </details>
 
+---
+
 # Exercice 3 : Utilisation d'Express
 
 > Objectif : Découvrir le framework Express pour simplifier la création d'applications web avec Node.js.
+
+---
 
 ## Instructions :
 
 * Installez Express (npm install express).
 * Créez un nouveau fichier `app.js`.
 * Utilisez Express pour créer un serveur qui gère les mêmes routes que dans l'exercice 2.
+
+---
 
 ### Code :
 
@@ -107,9 +123,13 @@ app.listen(3000, () => {
 
 ```
 
+---
+
 # Exercice 4 : Manipulation de Données avec une API REST
 
 > Objectif : Créer une API REST simple pour manipuler des données en mémoire.
+
+---
 
 ## Instructions :
 
@@ -119,6 +139,8 @@ app.listen(3000, () => {
 * POST `/tasks` : Ajoute une nouvelle tâche.
 * PUT `/tasks/:id` : Modifie une tâche existante.
 * DELETE `/tasks/:id` : Supprime une tâche.
+
+---
 
 ### Code :
 
@@ -167,15 +189,21 @@ app.listen(3000, () => {
 ```
 </details>
 
+---
+
 # Exercice 5 : Interaction avec une Base de Données
 
 > Objectif : Apprendre à interagir avec une base de données MongoDB en utilisant Mongoose.
+
+---
 
 ## Instructions :
 
 * Installez MongoDB et Mongoose (npm install mongoose).
 * Créez un fichier database.js pour gérer la connexion à la base de données.
 * Modifiez l'exercice 4 pour sauvegarder les tâches dans une base de données MongoDB au lieu de les stocker en mémoire.
+
+---
 
 ### Code :
 
@@ -226,8 +254,12 @@ app.listen(3000, () => {
 ```
 </details>
 
+---
+
 # Exercice 6 : Authentification Utilisateur avec JWT
 > Objectif : Apprendre à implémenter l'authentification des utilisateurs en utilisant JSON Web Tokens (JWT).
+
+---
 
 ## Instructions :
 
@@ -236,6 +268,8 @@ app.listen(3000, () => {
 * Implémentez des routes pour l'inscription (`/register`) et la connexion (`/login`).
 * Utilisez `bcryptjs` pour hacher les mots de passe et jsonwebtoken pour générer des tokens JWT.
 * Créez une route protégée (`/protected`) qui nécessite un token JWT valide pour l'accès.
+
+---
 
 ### Code :
 
@@ -309,3 +343,5 @@ app.listen(3000, () => {
 
 ```
 </details>
+
+---

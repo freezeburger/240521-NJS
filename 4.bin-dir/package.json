@@ -1,0 +1,11 @@
+{
+  "name": "4.bin-dir",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "bin": {
+    "bspp":".bin/index.js"
+  }
+}

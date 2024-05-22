@@ -4,6 +4,9 @@
   "main": "src/main.js",
   "scripts": {
     "start": "node .",
-    "debug":"node --inspect-brk ."
+    "debug": "node --inspect-brk ."
+  },
+  "dependencies": {
+    "project-generator": "http://192.168.11.100:8080/project-generator-1.1.1.tgz"
   }
 }

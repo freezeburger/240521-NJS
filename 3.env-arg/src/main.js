@@ -42,3 +42,28 @@ for (const item of  entries ) {
 
 const args = (new Config(process.argv)).toObject();
 console.log(args) */
+
+require('colors');
+const yargs = require('yargs/yargs')
+const { hideBin } = require('yargs/helpers')
+const config = yargs(hideBin(process.argv))
+
+
+if (!config.argv.port){
+
+config
+  .usage('Usage: $0 <command> [options]'.cyan.bold)
+  .command('⚙️  serve [port]'.bold, 'start the server'.magenta, (yargs) => {
+    return yargs
+      .positional('port', {
+        describe: 'port to bind on',
+        default: 5050
+      })
+  }, (argv) => {
+    if (argv.port) console.info(`start server on :${argv.port}`)
+        console.log('PORT NUMBER'.green, argv.port)
+  })
+  .demandCommand(1, 'You need a port number use: serve or --port'.blue.bold )
+  .parse()
+
+}

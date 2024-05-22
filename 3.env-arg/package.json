@@ -2,11 +2,15 @@
   "name": "3.env-arg",
   "version": "1.0.0",
   "main": "src/main.js",
-  "private":true,
+  "private": true,
   "engines": {
     "node": "^20.13.1"
   },
   "scripts": {
     "start": "node ."
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "yargs": "^17.7.2"
   }
 }
