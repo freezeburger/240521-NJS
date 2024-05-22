@@ -27,8 +27,7 @@ mkdirSync(config.argv.name);
   { path: `${config.argv.name}/.gitignore`, content: 'node_modules/' },
   { path: `${config.argv.name}/src/main.js`, content: 'console.log("Main");' },
   {
-    path: `${config.argv.name}/bin/index.js`, content: `
-#!/usr/bin/env node
+    path: `${config.argv.name}/bin/index.js`, content: `#!/usr/bin/env node
 
 require('../src/main.js')
 `},

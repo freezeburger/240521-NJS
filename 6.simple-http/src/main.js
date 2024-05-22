@@ -11,6 +11,7 @@ require('http').createServer((req, res) => {
     console.log(req)
 
     res.writeHead(200)
+    res.setHeader('Content-Type','text/plain')
 
     res.write('Hello World')
     res.end()

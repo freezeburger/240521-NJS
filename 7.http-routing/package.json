@@ -1,0 +1,11 @@
+{
+  "name": "http-routing",
+  "version": "1.0.0",
+  "main": "bin/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
