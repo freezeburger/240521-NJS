@@ -1,0 +1,12 @@
+{
+  "name": "3.env-arg",
+  "version": "1.0.0",
+  "main": "src/main.js",
+  "private":true,
+  "engines": {
+    "node": "^20.13.1"
+  },
+  "scripts": {
+    "start": "node ."
+  }
+}
