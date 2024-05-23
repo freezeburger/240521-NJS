@@ -1,13 +1,16 @@
 const express = require('express');
 const { MessageService } = require('../services/message.service');
 const router = express.Router()
+const bodyParser = require('body-parser')
 
 router.route('/')
     .all((req, res) => {
         res.send( 'You must specify a resource' )
     })
 
-router.route('/:resource')
+router
+    .use(bodyParser.json())
+    .route('/:resource')
     // C-reate
     .all((req, res, next) => {
         if( req.params.resource === 'messages' ){
@@ -18,6 +21,7 @@ router.route('/:resource')
         }
     })
     .post((req, res) => {
+        console.log(req.body)
         res.send('POST' + req.params.resource )
     })
     // R-ead
