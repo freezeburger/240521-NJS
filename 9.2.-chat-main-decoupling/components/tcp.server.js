@@ -1,28 +1,30 @@
 
 import { Server } from 'socket.io';
-import { insertMessage, retrieveMessages } from './database.js';
+import { EventManager } from './event-manager.js';
 
 export const bindTCPServer = (server, config = {}) => {
-    const io = new Server(server, config );
+    const io = new Server(server, config);
 
     io.on('connection', async (socket) => {
-        socket.on('chat message', async (msg, clientOffset, callback) => {
-            const result = await insertMessage(msg, clientOffset, callback);
-            io.emit('chat message', msg, result.lastID);
-            callback();
+
+        socket.on('chat message', async (msg, clientOffset, _) => {
+            
+            EventManager.emit('MESSAGE_INSERT', {
+                msg, clientOffset,
+                callback: result => io.emit('chat message', msg, result.lastID)
+            });
         });
 
         if (!socket.recovered) {
-            try {
-                await retrieveMessages(
-                    [socket.handshake.auth.serverOffset || 0],
-                    (_err, row) => {
-                        socket.emit('chat message', row.content, row.id);
-                    }
-                )
-            } catch (e) {
-                // something went wrong
-            }
+
+            EventManager.emit('MESSAGES_REQUEST', {
+                id: socket.handshake.auth.serverOffset,
+                callback: (_err, row) => {
+                    console.log(row)
+                    socket.emit('chat message', row.content, row.id);
+                }
+            });
+
         }
     });
 }

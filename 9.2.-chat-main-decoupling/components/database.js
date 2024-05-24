@@ -1,5 +1,7 @@
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
+import { EventManager } from './event-manager.js';
+
 
 let db;
 export const init = async () => {
@@ -18,6 +20,7 @@ export const init = async () => {
 }
 
 export const retrieveMessages = async (id = 0, callback = () => false) => {
+    if(!db) await init();
     return await db.each('SELECT id, content FROM messages WHERE id > ?',
         [id],
         callback
@@ -37,3 +40,13 @@ export const insertMessage = async (msg, clientOffset, callback) => {
         return {};
     }
 }
+
+EventManager.on('MESSAGE_INSERT', async ({ msg, clientOffset, callback }) => {
+    const result = await insertMessage(msg, clientOffset, callback);
+    callback(result)
+});
+
+EventManager.on('MESSAGES_REQUEST', async ({ id, callback }) => {
+    console.log({ id, callback })
+    await retrieveMessages(id, callback);
+});
