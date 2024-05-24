@@ -11,7 +11,7 @@ export const bindTCPServer = (server, config = {}) => {
             
             EventManager.emit('MESSAGE_INSERT', {
                 msg, clientOffset,
-                callback: result => io.emit('chat message', msg, result.lastID)
+                callback: result => io.emit('chat message', msg, result?.lastID)
             });
         });
 
