@@ -1,20 +1,25 @@
 console.log("Main");
 
+const appLogger =  require('./loggers/winston.js')('Main Router');
 const express = require('express')
 const app = express()
-const PORT = process.env.PORT || 3000
-
+const PORT = process.env.PORT || 3000;
 
 app
     .use(require('./middlewares/default-headers.middleware.js'))
     .use(require('./loggers/morgan.js'))
     .use(express.static('www'))
     .use('/api', require('./routers/api.js'))
-    .use(require('./middlewares/404.middleware.js'))
+    .use(require('./middlewares/404.middleware.js'));
 
-app.listen(PORT, () => {
-    console.log(`Example app listening on port http://127.0.0.1:${PORT}`)
-})
+app
+    .listen(PORT, () => {
+        const msg = `Example app listening on port http://127.0.0.1:${PORT}`
+        appLogger.log('info', msg );
+    });
+
+
+   
 
 /* 
 const http2 = require('http2');

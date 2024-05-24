@@ -1,4 +1,5 @@
 const express = require('express');
+const appLogger =  require('../loggers/winston.js')('API');
 const { MessageService } = require('../services/message.service');
 const router = express.Router()
 const bodyParser = require('body-parser')
@@ -17,7 +18,9 @@ router
             req.service = MessageService;
             next()
         }else{
-            res.end( 'Invalid resource' )
+            const msg =  'Invalid resource';
+            appLogger.log('error', msg )
+            res.end( msg )
         }
     })
     .post((req, res) => {

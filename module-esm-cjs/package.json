@@ -1,0 +1,9 @@
+{
+  "name": "module-esm-cjs",
+  "version": "1.0.0",
+  "main": "bin/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ."
+  }
+}

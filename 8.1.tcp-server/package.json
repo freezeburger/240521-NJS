@@ -1,0 +1,19 @@
+{
+  "name": "8.1.tcp-server",
+  "version": "1.0.0",
+  "main": "bin/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node .",
+    "dev": "npx nodemon ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
