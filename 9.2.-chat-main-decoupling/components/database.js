@@ -41,12 +41,11 @@ export const insertMessage = async (msg, clientOffset, callback) => {
     }
 }
 
-EventManager.on('MESSAGE_INSERT', async ({ msg, clientOffset, callback }) => {
+EventManager.on(EventManager.MESSAGE_INSERT, async ({ msg, clientOffset, callback }) => {
     const result = await insertMessage(msg, clientOffset, callback);
-    console.log({result})
     callback(result)
 });
 
-EventManager.on('MESSAGES_REQUEST', async ({ id, callback }) => {
+EventManager.on(EventManager.MESSAGES_REQUEST, async ({ id, callback }) => {
     await retrieveMessages(id, callback);
 });

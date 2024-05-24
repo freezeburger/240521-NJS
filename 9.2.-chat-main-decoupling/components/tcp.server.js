@@ -9,15 +9,16 @@ export const bindTCPServer = (server, config = {}) => {
 
         socket.on('chat message', async (msg, clientOffset, _) => {
             
-            EventManager.emit('MESSAGE_INSERT', {
-                msg, clientOffset,
+            EventManager.emit(EventManager.MESSAGE_INSERT, {
+                msg, 
+                clientOffset,
                 callback: result => io.emit('chat message', msg, result?.lastID)
             });
         });
 
         if (!socket.recovered) {
 
-            EventManager.emit('MESSAGES_REQUEST', {
+            EventManager.emit(EventManager.MESSAGES_REQUEST, {
                 id: socket.handshake.auth.serverOffset,
                 callback: (_err, row) => {
                     console.log(row)
